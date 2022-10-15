@@ -15,6 +15,8 @@
 		1843DDDC28FAB77800514DAA /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDDB28FAB77800514DAA /* Persistent.swift */; };
 		1843DDDE28FABC8000514DAA /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDDD28FABC8000514DAA /* ListRowView.swift */; };
 		1843DDE028FAC2E900514DAA /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDDF28FAC2E900514DAA /* TodoManager.swift */; };
+		1843DDE228FACD2500514DAA /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDE128FACD2500514DAA /* ListView.swift */; };
+		1843DDE428FAD2D100514DAA /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDE328FAD2D100514DAA /* AddTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		1843DDDB28FAB77800514DAA /* Persistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		1843DDDD28FABC8000514DAA /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		1843DDDF28FAC2E900514DAA /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
+		1843DDE128FACD2500514DAA /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		1843DDE328FAD2D100514DAA /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				1843DDCA28FAB51600514DAA /* TodoHeroApp.swift */,
 				1843DDCC28FAB51600514DAA /* ContentView.swift */,
 				1843DDDD28FABC8000514DAA /* ListRowView.swift */,
+				1843DDE128FACD2500514DAA /* ListView.swift */,
+				1843DDE328FAD2D100514DAA /* AddTaskView.swift */,
 				1843DDDF28FAC2E900514DAA /* TodoManager.swift */,
 				1843DDDB28FAB77800514DAA /* Persistent.swift */,
 				1843DDD828FAB5B100514DAA /* TodoHero.xcdatamodeld */,
@@ -152,6 +158,8 @@
 				1843DDDC28FAB77800514DAA /* Persistent.swift in Sources */,
 				1843DDE028FAC2E900514DAA /* TodoManager.swift in Sources */,
 				1843DDDA28FAB5B100514DAA /* TodoHero.xcdatamodeld in Sources */,
+				1843DDE428FAD2D100514DAA /* AddTaskView.swift in Sources */,
+				1843DDE228FACD2500514DAA /* ListView.swift in Sources */,
 				1843DDDE28FABC8000514DAA /* ListRowView.swift in Sources */,
 				1843DDCD28FAB51600514DAA /* ContentView.swift in Sources */,
 				1843DDCB28FAB51600514DAA /* TodoHeroApp.swift in Sources */,

@@ -12,7 +12,10 @@ struct TodoHeroApp: App {
     let persistenceController = PersistenceController()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+//            ContentView()
+            ListView()
+                .environmentObject(TodoManager())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

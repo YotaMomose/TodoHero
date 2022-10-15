@@ -14,8 +14,9 @@ struct ListRowView: View {
     var body: some View {
         HStack {
             
-            Text(IsCheck ? "☑︎" : "□")
+            
             if IsCheck {
+                Text("☑︎")
                 Text(task)
                     .strikethrough()
                     .fontWeight(.ultraLight)
@@ -59,6 +60,7 @@ struct ListRowView: View {
                 }
                 // defaultをなんとかしたい
             } else {
+                Text("□")
                 Text(task)
                 switch monstar {
                 case 1 :

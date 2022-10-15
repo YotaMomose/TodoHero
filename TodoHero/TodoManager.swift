@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TodoManager: ObservableObject {
-    
+    @Published var isEditing: Bool = false
 }
 
 enum monster {
