@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TodoHeroApp: App {
+    let persistenceController = PersistenceController()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

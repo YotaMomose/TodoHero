@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.timestamp, ascending: true)],
+                  animation: .default) var items: FetchedResults<Task>
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
