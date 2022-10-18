@@ -14,6 +14,7 @@ struct ListView: View {
     @EnvironmentObject var todoManager : TodoManager
     @State var isPresented = false
     @State var isShowAction = false
+    @State var taskIndex :FetchedResults<Task>.Index?
     
     var body: some View {
         NavigationStack {
@@ -32,18 +33,24 @@ struct ListView: View {
                     }
                 }
                 
-                ForEach(items) { item in
+                ForEach(items,id: \.self) { item in
+                    
                     Button(action:{
+
+                        if let index = items.firstIndex(of : item) {
+                            taskIndex = index
+                        }
                         isShowAction = true
-                        //確認画面が出るように修正
+                        
                     }) {
                         if item.task?.isEmpty == false {
                             ListRowView(task:item.task! , IsCheck: item.checked, monstar: Int(item.monster))
                         }
                     }
+                    
                     .confirmationDialog("確認", isPresented: $isShowAction, titleVisibility: .hidden) {
                         Button("倒した！") {
-                            item.checked = true
+                            items[taskIndex!].checked = true
                         }
                         Button("まだ倒してない") {
                             isShowAction = false
@@ -51,12 +58,13 @@ struct ListView: View {
                     } message: {
                         Text("タスクを倒しましたか？").bold()
                     }
-                    
+//
                 }
                 
             }
         }
     }
+    
 }
 
 struct ListView_Previews: PreviewProvider {
