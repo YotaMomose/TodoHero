@@ -15,6 +15,7 @@ struct ListView: View {
     @State var isPresented = false
     @State var isShowAction = false
     @State var taskIndex :FetchedResults<Task>.Index?
+    @State var buttonAction: Bool = true
     
     var body: some View {
         NavigationStack {
@@ -40,7 +41,10 @@ struct ListView: View {
                         if let index = items.firstIndex(of : item) {
                             taskIndex = index
                         }
-                        isShowAction = true
+                        if !item.checked {
+                            isShowAction = true
+                        }
+                        
                         
                     }) {
                         if item.task?.isEmpty == false {
@@ -51,7 +55,9 @@ struct ListView: View {
                     .confirmationDialog("確認", isPresented: $isShowAction, titleVisibility: .hidden) {
                         Button("倒した！") {
                             items[taskIndex!].checked = true
-                            todoManager.monsterExp = CGFloat(Int(items[taskIndex!].monster))
+                            todoManager.monsterExp = CGFloat(Int(items[taskIndex!].experience))
+                            getEx()
+                            buttonAction = true
                             do {
                                 try viewContext.save()
                             } catch {
@@ -64,9 +70,37 @@ struct ListView: View {
                     } message: {
                         Text("タスクを倒しましたか？").bold()
                     }
+                    
                 }
                 
             }
+        }
+    }
+    
+    func getEx() {
+        todoManager.getExp = 0
+        todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+            
+            todoManager.bar += 1
+            todoManager.getExp += 1
+            if todoManager.bar == 100 {
+                todoManager.fraction = todoManager.monsterExp - todoManager.getExp
+            }
+            
+            if todoManager.getExp == todoManager.monsterExp {
+                todoManager.timerHandler?.invalidate()
+            }
+        }
+    }
+    
+    func getFraction() {
+        todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+            if todoManager.fraction == 0 {
+                todoManager.timerHandler?.invalidate()
+                return
+            }
+            todoManager.bar += 1
+            todoManager.fraction -= 1
         }
     }
     
