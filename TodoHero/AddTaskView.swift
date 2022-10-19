@@ -12,6 +12,7 @@ struct AddTaskView: View {
     @FetchRequest(sortDescriptors: []) var items: FetchedResults<Task>
     @State var taskText = ""
     @State var monster = 1
+    @State var exp = 0
     @EnvironmentObject var todoManager : TodoManager
     
     var body: some View {
@@ -21,26 +22,31 @@ struct AddTaskView: View {
             Menu("追加") {
                 Button("スライム",action: {
                     monster = 1
+                    exp = 3
                     self.createTask()
                     self.todoManager.isEditing = false
                 })
                 Button("オーク",action: {
                     monster = 2
+                    exp = 5
                     self.createTask()
                     self.todoManager.isEditing = false
                 })
                 Button("ゴーレム",action: {
                     monster = 3
+                    exp = 10
                     self.createTask()
                     self.todoManager.isEditing = false
                 })
                 Button("ドラゴン",action: {
                     monster = 4
+                    exp = 20
                     self.createTask()
                     self.todoManager.isEditing = false
                 })
                 Button("魔王",action: {
                     monster = 5
+                    exp = 30
                     self.createTask()
                     self.todoManager.isEditing = false
                 })
@@ -55,6 +61,7 @@ struct AddTaskView: View {
         newTask.checked = false
         newTask.monster = Int16(monster)
         newTask.timestamp = Date()
+        newTask.experience = Int16(exp)
         self.taskText = ""
         
         do {

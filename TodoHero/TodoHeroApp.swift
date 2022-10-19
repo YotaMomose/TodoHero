@@ -13,8 +13,7 @@ struct TodoHeroApp: App {
     var body: some Scene {
         WindowGroup {
             
-//            ContentView()
-            ListView()
+            ContentView()
                 .environmentObject(TodoManager())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

@@ -51,6 +51,12 @@ struct ListView: View {
                     .confirmationDialog("確認", isPresented: $isShowAction, titleVisibility: .hidden) {
                         Button("倒した！") {
                             items[taskIndex!].checked = true
+                            todoManager.monsterExp = CGFloat(Int(items[taskIndex!].monster))
+                            do {
+                                try viewContext.save()
+                            } catch {
+                                fatalError("セーブに失敗")
+                            }
                         }
                         Button("まだ倒してない") {
                             isShowAction = false
@@ -58,7 +64,6 @@ struct ListView: View {
                     } message: {
                         Text("タスクを倒しましたか？").bold()
                     }
-//
                 }
                 
             }

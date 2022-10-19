@@ -9,6 +9,7 @@ import SwiftUI
 
 class TodoManager: ObservableObject {
     @Published var isEditing: Bool = false
+    @Published var monsterExp :CGFloat = 20
 }
 
 enum monster {
