@@ -19,6 +19,7 @@
 		1843DDE428FAD2D100514DAA /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDE328FAD2D100514DAA /* AddTaskView.swift */; };
 		187C212D28FF6E66000369CC /* ExperienceBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C212C28FF6E66000369CC /* ExperienceBarView.swift */; };
 		187C212F28FF7B8D000369CC /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C212E28FF7B8D000369CC /* StatusView.swift */; };
+		187C213128FF8A01000369CC /* LevelupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C213028FF8A01000369CC /* LevelupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		1843DDE328FAD2D100514DAA /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		187C212C28FF6E66000369CC /* ExperienceBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceBarView.swift; sourceTree = "<group>"; };
 		187C212E28FF7B8D000369CC /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		187C213028FF8A01000369CC /* LevelupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				1843DDCA28FAB51600514DAA /* TodoHeroApp.swift */,
 				1843DDCC28FAB51600514DAA /* ContentView.swift */,
+				187C213028FF8A01000369CC /* LevelupView.swift */,
 				1843DDDD28FABC8000514DAA /* ListRowView.swift */,
 				1843DDE128FACD2500514DAA /* ListView.swift */,
 				1843DDE328FAD2D100514DAA /* AddTaskView.swift */,
@@ -171,6 +174,7 @@
 				1843DDDE28FABC8000514DAA /* ListRowView.swift in Sources */,
 				1843DDCD28FAB51600514DAA /* ContentView.swift in Sources */,
 				1843DDCB28FAB51600514DAA /* TodoHeroApp.swift in Sources */,
+				187C213128FF8A01000369CC /* LevelupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

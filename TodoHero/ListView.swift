@@ -16,7 +16,7 @@ struct ListView: View {
     @State var isShowAction = false
     @State var taskIndex :FetchedResults<Task>.Index?
     @State var buttonAction: Bool = true
-    
+    @State var isShoeLevelup = false
     var body: some View {
         NavigationStack {
             List {
@@ -75,7 +75,11 @@ struct ListView: View {
                 
             }
         }
+        .sheet(isPresented: $isShoeLevelup) {
+            LevelupView(isPresented: $isShoeLevelup)
+        }
     }
+        
     
     func getEx() {
         todoManager.getExp = 0
@@ -85,6 +89,8 @@ struct ListView: View {
             todoManager.getExp += 1
             if todoManager.bar == 100 {
                 todoManager.fraction = todoManager.monsterExp - todoManager.getExp
+                isShoeLevelup = true
+                todoManager.timerHandler?.invalidate()
             }
             
             if todoManager.getExp == todoManager.monsterExp {
@@ -93,17 +99,17 @@ struct ListView: View {
         }
     }
     
-    func getFraction() {
-        todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
-            if todoManager.fraction == 0 {
-                todoManager.timerHandler?.invalidate()
-                return
-            }
-            todoManager.bar += 1
-            todoManager.fraction -= 1
-        }
-    }
-    
+//    func getFraction() {
+//        todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+//            if todoManager.fraction == 0 {
+//                todoManager.timerHandler?.invalidate()
+//                return
+//            }
+//            todoManager.bar += 1
+//            todoManager.fraction -= 1
+//        }
+//    }
+//
 }
 
 struct ListView_Previews: PreviewProvider {

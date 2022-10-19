@@ -18,6 +18,7 @@ struct ContentView: View {
             StatusView()
             ListView()
         }
+        
         .padding()
     }
 }
