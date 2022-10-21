@@ -20,6 +20,8 @@
 		187C212D28FF6E66000369CC /* ExperienceBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C212C28FF6E66000369CC /* ExperienceBarView.swift */; };
 		187C212F28FF7B8D000369CC /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C212E28FF7B8D000369CC /* StatusView.swift */; };
 		187C213128FF8A01000369CC /* LevelupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C213028FF8A01000369CC /* LevelupView.swift */; };
+		18860B8029028A5800BD0503 /* PixelMplus12-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18860B7F29028A5700BD0503 /* PixelMplus12-Regular.ttf */; };
+		18860B832902926200BD0503 /* InitializationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18860B822902926200BD0503 /* InitializationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,9 @@
 		187C212C28FF6E66000369CC /* ExperienceBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceBarView.swift; sourceTree = "<group>"; };
 		187C212E28FF7B8D000369CC /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		187C213028FF8A01000369CC /* LevelupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelupView.swift; sourceTree = "<group>"; };
+		18860B7F29028A5700BD0503 /* PixelMplus12-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PixelMplus12-Regular.ttf"; sourceTree = "<group>"; };
+		18860B8129028AA000BD0503 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		18860B822902926200BD0503 /* InitializationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,7 @@
 		1843DDC928FAB51600514DAA /* TodoHero */ = {
 			isa = PBXGroup;
 			children = (
+				18860B8129028AA000BD0503 /* Info.plist */,
 				1843DDCA28FAB51600514DAA /* TodoHeroApp.swift */,
 				1843DDCC28FAB51600514DAA /* ContentView.swift */,
 				187C213028FF8A01000369CC /* LevelupView.swift */,
@@ -77,9 +83,11 @@
 				1843DDE328FAD2D100514DAA /* AddTaskView.swift */,
 				187C212C28FF6E66000369CC /* ExperienceBarView.swift */,
 				187C212E28FF7B8D000369CC /* StatusView.swift */,
+				18860B822902926200BD0503 /* InitializationView.swift */,
 				1843DDDF28FAC2E900514DAA /* TodoManager.swift */,
 				1843DDDB28FAB77800514DAA /* Persistent.swift */,
 				1843DDD828FAB5B100514DAA /* TodoHero.xcdatamodeld */,
+				18860B7F29028A5700BD0503 /* PixelMplus12-Regular.ttf */,
 				1843DDCE28FAB51900514DAA /* Assets.xcassets */,
 				1843DDD028FAB51900514DAA /* Preview Content */,
 			);
@@ -152,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18860B8029028A5800BD0503 /* PixelMplus12-Regular.ttf in Resources */,
 				1843DDD228FAB51900514DAA /* Preview Assets.xcassets in Resources */,
 				1843DDCF28FAB51900514DAA /* Assets.xcassets in Resources */,
 			);
@@ -166,6 +175,7 @@
 			files = (
 				1843DDDC28FAB77800514DAA /* Persistent.swift in Sources */,
 				1843DDE028FAC2E900514DAA /* TodoManager.swift in Sources */,
+				18860B832902926200BD0503 /* InitializationView.swift in Sources */,
 				1843DDDA28FAB5B100514DAA /* TodoHero.xcdatamodeld in Sources */,
 				187C212D28FF6E66000369CC /* ExperienceBarView.swift in Sources */,
 				187C212F28FF7B8D000369CC /* StatusView.swift in Sources */,
@@ -306,6 +316,7 @@
 				DEVELOPMENT_TEAM = K9B8A25XD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoHero/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -335,6 +346,7 @@
 				DEVELOPMENT_TEAM = K9B8A25XD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoHero/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

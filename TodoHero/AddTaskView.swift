@@ -69,7 +69,6 @@ struct AddTaskView: View {
         newTask.monster = Int16(monster)
         newTask.timestamp = Date()
         newTask.experience = Int16(exp)
-        newTask.id = UUID()
         newTask.data = Int16(items.count)
         
         self.taskText = ""

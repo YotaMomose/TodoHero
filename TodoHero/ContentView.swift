@@ -24,8 +24,9 @@ struct ContentView: View {
             .padding()
             .toolbar{
                 EditButton()
-                    
+                    .disabled(items.isEmpty)
             }
+            
         }
     }
      

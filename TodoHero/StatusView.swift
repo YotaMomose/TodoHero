@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StatusView: View {
+    @FetchRequest (sortDescriptors: []) var user: FetchedResults<UserInfo>
     var body: some View {
         HStack {
             Text("Name")

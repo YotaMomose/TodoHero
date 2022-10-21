@@ -12,8 +12,15 @@ struct LevelupView: View {
     @Binding var isPresented:Bool
     
     var body: some View {
+        
         VStack {
             Text("レベルアップ!!")
+                .font(Font.gameFont(size: 40))
+            
+            Rectangle()
+                .stroke(lineWidth: 10)
+                .frame(height: 70)
+                
             Button(action:{
                 isPresented = false
                 todoManager.bar = 0

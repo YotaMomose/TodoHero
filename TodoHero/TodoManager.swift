@@ -16,10 +16,8 @@ class TodoManager: ObservableObject {
     @Published var bar: CGFloat = 0
 }
 
-enum monster {
-    case slime
-    case orc
-    case golem
-    case dragon
-    case maou
+extension Font {
+    static func gameFont(size: CGFloat) -> Font {
+        return Font.custom("PixelMplus12-Regular", size: size)
+    }
 }
