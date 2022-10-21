@@ -20,37 +20,44 @@ struct AddTaskView: View {
             TextField("タスクを追加してください",text: $taskText)
             
             Menu("追加") {
-                Button("スライム",action: {
-                    monster = 1
-                    exp = 3
-                    self.createTask()
-                    self.todoManager.isEditing = false
-                })
-                Button("オーク",action: {
-                    monster = 2
-                    exp = 5
-                    self.createTask()
-                    self.todoManager.isEditing = false
-                })
-                Button("ゴーレム",action: {
-                    monster = 3
-                    exp = 10
-                    self.createTask()
-                    self.todoManager.isEditing = false
-                })
-                Button("ドラゴン",action: {
-                    monster = 4
-                    exp = 20
-                    self.createTask()
-                    self.todoManager.isEditing = false
-                })
-                Button("魔王",action: {
-                    monster = 5
-                    exp = 30
-                    self.createTask()
-                    self.todoManager.isEditing = false
-                })
-                Text("難易度を選ぼう")
+                if taskText.isEmpty {
+                    Button("タスクを追加してください",action: {})
+                } else {
+                    Text("難易度を選ぼう")
+                        
+                    Button("スライム",action: {
+                        monster = 1
+                        exp = 3
+                        self.createTask()
+                        self.todoManager.isEditing = false
+                    })
+                    Button("オーク",action: {
+                        monster = 2
+                        exp = 5
+                        self.createTask()
+                        self.todoManager.isEditing = false
+                    })
+                    Button("ゴーレム",action: {
+                        monster = 3
+                        exp = 10
+                        self.createTask()
+                        self.todoManager.isEditing = false
+                    })
+                    Button("ドラゴン",action: {
+                        monster = 4
+                        exp = 20
+                        self.createTask()
+                        self.todoManager.isEditing = false
+                    })
+                    Button("魔王",action: {
+                        monster = 5
+                        exp = 30
+                        self.createTask()
+                        self.todoManager.isEditing = false
+                    })
+                    
+                }
+                
             }
         }
     }
@@ -62,6 +69,8 @@ struct AddTaskView: View {
         newTask.monster = Int16(monster)
         newTask.timestamp = Date()
         newTask.experience = Int16(exp)
+        newTask.id = UUID()
+        
         self.taskText = ""
         
         do {

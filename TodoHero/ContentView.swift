@@ -14,13 +14,21 @@ struct ContentView: View {
                   animation: .default) var items: FetchedResults<Task>
     
     var body: some View {
-        VStack {
-            StatusView()
-            ListView()
+        NavigationStack {
+            VStack {
+                StatusView()
+                ListView()
+                    
+            }
+            
+            .padding()
+            .toolbar{
+                EditButton()
+                    
+            }
         }
-        
-        .padding()
     }
+     
 }
 
 struct ContentView_Previews: PreviewProvider {
