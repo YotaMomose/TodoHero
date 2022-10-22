@@ -9,9 +9,12 @@ import SwiftUI
 
 struct InitializationView: View {
     @State var page = 0
-    @State var userName = "未設定"
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest (sortDescriptors: []) var user: FetchedResults<UserInfo>
+    @Binding var isPresented: Bool
+    @AppStorage("first_login") var firstLogin = true
+    @AppStorage("user_name") var userName = "未設定"
+    @State var alert = false
     var body: some View {
         
         ZStack {
@@ -28,29 +31,31 @@ struct InitializationView: View {
                     
                     VStack {
                         if page == 0 {
-                          Text("はじめまして。\n日々やることに追われて、嫌になっていませんか？\nこのアプリは日々のタスクをゲームのような感覚でこなしていくお手伝いをします。")
+                          Text("日常生活に溢れるやらなければならないこと。\nそんな面倒な敵を倒すべく１人の勇者が立ち上がった。")
                         } else if page == 1 {
                             Text("まずはあなたの名前を教えてください。")
                             HStack {
                                 TextField("名前登録", text: $userName)
                                     .overlay(Rectangle().stroke())
+                                
                                 Button(action:{
-                                    let newUser = UserInfo(context:viewContext)
-                                    newUser.name = userName
-                                    do {
-                                        try viewContext.save()
-                                    } catch {
-                                        fatalError("セーブに失敗")
+                                    if userName.count > 8 {
+                                        alert = true
+                                        return
                                     }
-                                    page += 1
+                                page += 1
                                 }) {
                                     Text("▶︎決定")
                                     
                                 }
                             }
-                            
+                            if alert {
+                                Text("名前は８文字以内で設定できます")
+                                    .font(.gameFont(size: 20))
+                                    .foregroundColor(.white)
+                            }
                         } else if page == 2 {
-                            Text("ようこそ\(userName)さん\nさっそくアプリを始めましょう！")
+                            Text("ようこそ、\(userName)さん\nさっそくアプリを始めましょう！")
                         }
                         
                         
@@ -61,6 +66,8 @@ struct InitializationView: View {
                     .font(Font.gameFont(size: 20))
                     .frame(width: 300, height: 150)
                     .foregroundColor(.white)
+                    
+                    
                 }
                 HStack {
                     
@@ -72,9 +79,14 @@ struct InitializationView: View {
                     .opacity(page==0 ? 0 : 1)
                     Spacer()
                     Button(action:{
+                        if page == 2 {
+                            isPresented = false
+                            firstLogin = false
+                            
+                        }
                         page += 1
                     }) {
-                        Text("次へ")
+                        Text(page == 2 ? "OK" : "次へ")
                     }
                     .opacity(page==1 ? 0 : 1)
                     
@@ -97,6 +109,6 @@ struct InitializationView: View {
 
 struct InitializationView_Previews: PreviewProvider {
     static var previews: some View {
-        InitializationView()
+        InitializationView(isPresented: .constant(true))
     }
 }

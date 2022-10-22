@@ -10,24 +10,39 @@ import SwiftUI
 struct LevelupView: View {
     @EnvironmentObject var todoManager: TodoManager
     @Binding var isPresented:Bool
-    
+    @AppStorage("user_name") var userName = "未設定"
+    @AppStorage("user_level") var userLevel = 1
     var body: some View {
         
-        VStack {
-            Text("レベルアップ!!")
-                .font(Font.gameFont(size: 40))
+        ZStack {
             
-            Rectangle()
-                .stroke(lineWidth: 10)
-                .frame(height: 70)
-                
-            Button(action:{
-                isPresented = false
-                todoManager.bar = 0
-                getFraction()
-            }) {
-                Text("閉じる")
+            Image("levelup")
+                .resizable()
+                .ignoresSafeArea()
+            VStack {
+                Text("レベルアップ!!")
+                    .font(Font.gameFont(size: 40))
+                    .foregroundColor(.pink)
+                Image("yuusya")
+                    .resizable()
+                ZStack {
+                    Text("Lv.\(userLevel-1) ⇨ Lv.\(userLevel)")
+                        .font(.gameFont(size: 40))
+                    Rectangle()
+                        .stroke(lineWidth: 10)
+                        .padding()
+                }
+                .frame(height: 100)
+                Button(action:{
+                    isPresented = false
+                    todoManager.bar = 0
+                    getFraction()
+                }) {
+                    Text("閉じる")
+                        .font(.gameFont(size: 20))
+                }
             }
+            
         }
         
     }

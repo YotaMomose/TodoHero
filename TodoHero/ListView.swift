@@ -17,6 +17,7 @@ struct ListView: View {
     @State var taskIndex :FetchedResults<Task>.Index?
     @State var buttonAction: Bool = true
     @State var isShoeLevelup = false
+    @AppStorage("user_level") var userLevel = 1
     var body: some View {
         NavigationStack {
             List {
@@ -77,7 +78,7 @@ struct ListView: View {
                 .onMove(perform: move)
             }
         }
-        .sheet(isPresented: $isShoeLevelup) {
+        .fullScreenCover(isPresented: $isShoeLevelup) {
             LevelupView(isPresented: $isShoeLevelup)
         }
     }
@@ -150,6 +151,7 @@ struct ListView: View {
                 todoManager.fraction = todoManager.monsterExp - todoManager.getExp
                 isShoeLevelup = true
                 todoManager.timerHandler?.invalidate()
+                userLevel += 1
             }
             
             if todoManager.getExp == todoManager.monsterExp {

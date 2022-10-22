@@ -16,6 +16,8 @@ class TodoManager: ObservableObject {
     @Published var bar: CGFloat = 0
 }
 
+
+
 extension Font {
     static func gameFont(size: CGFloat) -> Font {
         return Font.custom("PixelMplus12-Regular", size: size)

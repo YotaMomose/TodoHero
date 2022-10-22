@@ -12,7 +12,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.data, ascending: true)],
                   animation: .default) var items: FetchedResults<Task>
-    
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<UserInfo>
+    @State var firstLog = false
+    @AppStorage("first_login") var firstLogin = true
     var body: some View {
         NavigationStack {
             VStack {
@@ -27,6 +29,10 @@ struct ContentView: View {
                     .disabled(items.isEmpty)
             }
             
+        }
+        
+        .fullScreenCover(isPresented: $firstLogin) {
+            InitializationView(isPresented: $firstLogin)
         }
     }
      

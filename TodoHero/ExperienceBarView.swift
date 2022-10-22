@@ -23,7 +23,7 @@ struct ExperienceBarView: View {
                 
                 
             }
-            .frame(width: 200,height: 20)
+            .frame(width: 180,height: 20)
         }
     }
     
