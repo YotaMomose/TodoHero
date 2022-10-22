@@ -16,10 +16,15 @@ struct ListView: View {
     @State var isShowAction = false
     @State var taskIndex :FetchedResults<Task>.Index?
     @State var buttonAction: Bool = true
-    @State var isShoeLevelup = false
+    @State var isShoewLevelup = false
     @AppStorage("user_level") var userLevel = 1
-    @State var isVaidTimer = false
     @AppStorage("bar_exp") var bar = 0
+    @AppStorage("slime_counter") var slimeCounter = 0
+    @AppStorage("orc_counter") var orcCounter = 0
+    @AppStorage("golem_counter") var golemCounter = 0
+    @AppStorage("dragon_counter") var dragonCounter = 0
+    @AppStorage("maou_counter") var maouCounter = 0
+ 
     var body: some View {
         NavigationStack {
             List {
@@ -67,6 +72,18 @@ struct ListView: View {
                             } catch {
                                 fatalError("セーブに失敗")
                             }
+                            switch items[taskIndex!].monster {
+                            case 1 :
+                                slimeCounter += 1
+                            case 2:
+                                orcCounter += 1
+                            case 3:
+                                golemCounter += 1
+                            case 4:
+                                dragonCounter += 1
+                            default:
+                                maouCounter += 1
+                            }
                         }
                         
                         Button("まだ倒してない") {
@@ -81,10 +98,12 @@ struct ListView: View {
                 .onMove(perform: move)
             }
         }
-        .fullScreenCover(isPresented: $isShoeLevelup) {
-            LevelupView(isPresented: $isShoeLevelup)
+        .fullScreenCover(isPresented: $isShoewLevelup) {
+            LevelupView(isPresented: $isShoewLevelup)
         }
     }
+    
+    
         
     func deleteItems(offsets: IndexSet) {
        withAnimation {
@@ -129,17 +148,12 @@ struct ListView: View {
         for item in items {
             item.data = Int16(items.firstIndex(of: item)!)
         }
-        //アンラップ検討
-        
+       
         do {
             try viewContext.save()
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        print("###")
-        for i in items {
-            print(i.data)
         }
     }
     
@@ -152,7 +166,7 @@ struct ListView: View {
             todoManager.getExp += 1
             if bar == 100 {
                 todoManager.fraction = todoManager.monsterExp - todoManager.getExp
-                isShoeLevelup = true
+                isShoewLevelup = true
                 todoManager.timerHandler?.invalidate()
                 todoManager.isVaidTimer = false
                 userLevel += 1

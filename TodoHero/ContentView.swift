@@ -15,27 +15,28 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<UserInfo>
     @State var firstLog = false
     @AppStorage("first_login") var firstLogin = true
+    
     var body: some View {
         NavigationStack {
             VStack {
                 StatusView()
                 ListView()
-                    
             }
-            
             .padding()
             .toolbar{
                 EditButton()
                     .disabled(items.isEmpty)
             }
-            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: AchievementsView(), label: {Text("実績")})
+                }
+            }
         }
-        
         .fullScreenCover(isPresented: $firstLogin) {
             InitializationView(isPresented: $firstLogin)
         }
     }
-     
 }
 
 struct ContentView_Previews: PreviewProvider {

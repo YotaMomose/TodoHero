@@ -27,31 +27,31 @@ struct AddTaskView: View {
                         
                     Button("スライム",action: {
                         monster = 1
-                        exp = 3
+                        exp = 5
                         self.createTask()
                         self.todoManager.isEditing = false
                     })
                     Button("オーク",action: {
                         monster = 2
-                        exp = 5
+                        exp = 10
                         self.createTask()
                         self.todoManager.isEditing = false
                     })
                     Button("ゴーレム",action: {
                         monster = 3
-                        exp = 10
+                        exp = 15
                         self.createTask()
                         self.todoManager.isEditing = false
                     })
                     Button("ドラゴン",action: {
                         monster = 4
-                        exp = 20
+                        exp = 25
                         self.createTask()
                         self.todoManager.isEditing = false
                     })
                     Button("魔王",action: {
                         monster = 5
-                        exp = 30
+                        exp = 35
                         self.createTask()
                         self.todoManager.isEditing = false
                     })
@@ -59,6 +59,7 @@ struct AddTaskView: View {
                 }
                 
             }
+            .font(.gameFont(size: 15))
         }
     }
     

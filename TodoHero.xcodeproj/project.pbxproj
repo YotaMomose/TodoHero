@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183B681A2904A8D70004AA6D /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B68192904A8D70004AA6D /* AchievementsView.swift */; };
 		1843DDCB28FAB51600514DAA /* TodoHeroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDCA28FAB51600514DAA /* TodoHeroApp.swift */; };
 		1843DDCD28FAB51600514DAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843DDCC28FAB51600514DAA /* ContentView.swift */; };
 		1843DDCF28FAB51900514DAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1843DDCE28FAB51900514DAA /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183B68192904A8D70004AA6D /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1843DDC728FAB51600514DAA /* TodoHero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoHero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1843DDCA28FAB51600514DAA /* TodoHeroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoHeroApp.swift; sourceTree = "<group>"; };
 		1843DDCC28FAB51600514DAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				18860B8129028AA000BD0503 /* Info.plist */,
 				1843DDCA28FAB51600514DAA /* TodoHeroApp.swift */,
 				1843DDCC28FAB51600514DAA /* ContentView.swift */,
+				183B68192904A8D70004AA6D /* AchievementsView.swift */,
 				187C213028FF8A01000369CC /* LevelupView.swift */,
 				1843DDDD28FABC8000514DAA /* ListRowView.swift */,
 				1843DDE128FACD2500514DAA /* ListView.swift */,
@@ -182,6 +185,7 @@
 				1843DDE428FAD2D100514DAA /* AddTaskView.swift in Sources */,
 				1843DDE228FACD2500514DAA /* ListView.swift in Sources */,
 				1843DDDE28FABC8000514DAA /* ListRowView.swift in Sources */,
+				183B681A2904A8D70004AA6D /* AchievementsView.swift in Sources */,
 				1843DDCD28FAB51600514DAA /* ContentView.swift in Sources */,
 				1843DDCB28FAB51600514DAA /* TodoHeroApp.swift in Sources */,
 				187C213128FF8A01000369CC /* LevelupView.swift in Sources */,

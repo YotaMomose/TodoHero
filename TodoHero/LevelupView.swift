@@ -16,7 +16,6 @@ struct LevelupView: View {
     var body: some View {
         
         ZStack {
-            
             Image("levelup")
                 .resizable()
                 .ignoresSafeArea()
@@ -43,10 +42,9 @@ struct LevelupView: View {
                         .font(.gameFont(size: 20))
                 }
             }
-            
         }
-        
     }
+    
     func getFraction() {
         todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
             todoManager.isVaidTimer = true
