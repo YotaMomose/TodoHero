@@ -13,7 +13,7 @@ class TodoManager: ObservableObject {
     @Published var timerHandler : Timer?
     @Published var fraction: CGFloat = 0
     @Published var getExp:CGFloat = 0
-    @Published var bar: CGFloat = 0
+    @Published var isVaidTimer = false
 }
 
 

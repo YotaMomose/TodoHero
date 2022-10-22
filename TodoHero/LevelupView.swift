@@ -12,6 +12,7 @@ struct LevelupView: View {
     @Binding var isPresented:Bool
     @AppStorage("user_name") var userName = "未設定"
     @AppStorage("user_level") var userLevel = 1
+    @AppStorage("bar_exp") var bar = 0
     var body: some View {
         
         ZStack {
@@ -35,7 +36,7 @@ struct LevelupView: View {
                 .frame(height: 100)
                 Button(action:{
                     isPresented = false
-                    todoManager.bar = 0
+                    bar = 0
                     getFraction()
                 }) {
                     Text("閉じる")
@@ -48,11 +49,13 @@ struct LevelupView: View {
     }
     func getFraction() {
         todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+            todoManager.isVaidTimer = true
             if todoManager.fraction == 0 {
                 todoManager.timerHandler?.invalidate()
+                todoManager.isVaidTimer = false
                 return
             }
-            todoManager.bar += 1
+            bar += 1
             todoManager.fraction -= 1
         }
     }

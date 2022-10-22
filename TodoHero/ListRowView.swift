@@ -62,6 +62,7 @@ struct ListRowView: View {
             } else {
                 Text("□")
                 Text(task)
+                    .font(.gameFont(size: 15))
                 switch monstar {
                 case 1 :
                     Image("slime")

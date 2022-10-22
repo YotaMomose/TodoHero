@@ -18,6 +18,8 @@ struct ListView: View {
     @State var buttonAction: Bool = true
     @State var isShoeLevelup = false
     @AppStorage("user_level") var userLevel = 1
+    @State var isVaidTimer = false
+    @AppStorage("bar_exp") var bar = 0
     var body: some View {
         NavigationStack {
             List {
@@ -53,7 +55,7 @@ struct ListView: View {
                             ListRowView(task:item.task! , IsCheck: item.checked, monstar: Int(item.monster))
                         }
                     }
-                    
+                    .disabled(todoManager.isVaidTimer)
                     .confirmationDialog("確認", isPresented: $isShowAction, titleVisibility: .hidden) {
                         Button("倒した！") {
                             items[taskIndex!].checked = true
@@ -66,6 +68,7 @@ struct ListView: View {
                                 fatalError("セーブに失敗")
                             }
                         }
+                        
                         Button("まだ倒してない") {
                             isShowAction = false
                         }
@@ -144,18 +147,20 @@ struct ListView: View {
     func getEx() {
         todoManager.getExp = 0
         todoManager.timerHandler = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
-            
-            todoManager.bar += 1
+            todoManager.isVaidTimer = true
+            bar += 1
             todoManager.getExp += 1
-            if todoManager.bar == 100 {
+            if bar == 100 {
                 todoManager.fraction = todoManager.monsterExp - todoManager.getExp
                 isShoeLevelup = true
                 todoManager.timerHandler?.invalidate()
+                todoManager.isVaidTimer = false
                 userLevel += 1
             }
             
             if todoManager.getExp == todoManager.monsterExp {
                 todoManager.timerHandler?.invalidate()
+                todoManager.isVaidTimer = false
             }
         }
     }

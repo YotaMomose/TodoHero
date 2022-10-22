@@ -12,14 +12,14 @@ struct ExperienceBarView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.data, ascending: true)],
                   animation: .default) var items: FetchedResults<Task>
     @EnvironmentObject var todoManager: TodoManager
-    
+    @AppStorage("bar_exp") var bar = 0
     var body: some View {
         VStack {
             ZStack {
                 Rectangle().stroke(.gray)
                 Rectangle()
                     .foregroundColor(.green)
-                    .scaleEffect(x:(todoManager.bar/100),y: 1.0,anchor: .leading)
+                    .scaleEffect(x:(CGFloat(bar)/100),y: 1.0,anchor: .leading)
                 
                 
             }
