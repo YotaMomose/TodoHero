@@ -16,11 +16,11 @@ struct ExperienceBarView: View {
     var body: some View {
         VStack {
             ZStack {
-                Rectangle().stroke(.brown, lineWidth: 2)
+                
                 Rectangle()
                     .foregroundColor(.green)
                     .scaleEffect(x:(CGFloat(bar)/100),y: 1.0,anchor: .leading)
-                
+                Rectangle().stroke(.brown, lineWidth: 2)
                 
             }
             .frame(width: 180,height: 20)
