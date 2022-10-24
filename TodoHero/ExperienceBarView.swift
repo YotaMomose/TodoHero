@@ -23,7 +23,8 @@ struct ExperienceBarView: View {
                 Rectangle().stroke(.brown, lineWidth: 2)
                 
             }
-            .frame(width: 180,height: 20)
+            .frame(width: 130,height: 20)
+            Text("\(bar)")
         }
     }
     

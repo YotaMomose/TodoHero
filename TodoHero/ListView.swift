@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct ListView: View {
     @Environment(\.managedObjectContext) var viewContext
@@ -16,7 +17,7 @@ struct ListView: View {
     @State var isShowAction = false
     @State var taskIndex :FetchedResults<Task>.Index?
     @State var buttonAction: Bool = true
-    @State var isShoewLevelup = false
+    @AppStorage("shoew_levelup") var isShoewLevelup = false
     @AppStorage("user_level") var userLevel = 1
     @AppStorage("bar_exp") var bar = 0
     @AppStorage("slime_counter") var slimeCounter = 0
@@ -24,7 +25,10 @@ struct ListView: View {
     @AppStorage("golem_counter") var golemCounter = 0
     @AppStorage("dragon_counter") var dragonCounter = 0
     @AppStorage("maou_counter") var maouCounter = 0
- 
+    @AppStorage("fraction_exp") var fraction = 0
+    @AppStorage("ticket") var ticket = 0
+    @AppStorage("use_ticket") var useTicket = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -164,18 +168,40 @@ struct ListView: View {
             todoManager.isVaidTimer = true
             bar += 1
             todoManager.getExp += 1
-            if bar == 100 {
-                todoManager.fraction = todoManager.monsterExp - todoManager.getExp
-                isShoewLevelup = true
-                todoManager.timerHandler?.invalidate()
-                todoManager.isVaidTimer = false
-                userLevel += 1
+            if !useTicket {
+                if bar == 100 {
+                    fraction = Int(todoManager.monsterExp - todoManager.getExp)
+                    isShoewLevelup = true
+                    todoManager.timerHandler?.invalidate()
+                    todoManager.isVaidTimer = false
+                    userLevel += 1
+                    if (userLevel%10) == 0 {
+                        ticket += 1
+                    }
+                }
+                
+                if todoManager.getExp == todoManager.monsterExp {
+                    todoManager.timerHandler?.invalidate()
+                    todoManager.isVaidTimer = false
+                }
+            } else {
+                if bar == 100 {
+                    fraction = Int((todoManager.monsterExp*2) - todoManager.getExp)
+                    isShoewLevelup = true
+                    todoManager.timerHandler?.invalidate()
+                    todoManager.isVaidTimer = false
+                    userLevel += 1
+                    if (userLevel%10) == 0 {
+                        ticket += 1
+                    }
+                }
+                
+                if todoManager.getExp == (todoManager.monsterExp*2) {
+                    todoManager.timerHandler?.invalidate()
+                    todoManager.isVaidTimer = false
+                }
             }
             
-            if todoManager.getExp == todoManager.monsterExp {
-                todoManager.timerHandler?.invalidate()
-                todoManager.isVaidTimer = false
-            }
         }
     }
     }
