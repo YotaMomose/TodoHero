@@ -9,12 +9,11 @@ import SwiftUI
 
 struct InitializationView: View {
     @State var page = 0
-    @Environment(\.managedObjectContext) var viewContext
-    @FetchRequest (sortDescriptors: []) var user: FetchedResults<UserInfo>
     @Binding var isPresented: Bool
     @AppStorage("first_login") var firstLogin = true
     @AppStorage("user_name") var userName = "未設定"
     @State var alert = false
+    
     var body: some View {
         
         ZStack {

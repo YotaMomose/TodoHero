@@ -77,7 +77,8 @@ struct AddTaskView: View {
         do {
             try viewContext.save()
         } catch {
-            fatalError("セーブに失敗")
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

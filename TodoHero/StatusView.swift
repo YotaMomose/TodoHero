@@ -14,7 +14,9 @@ struct StatusView: View {
     @AppStorage("user_level") var userLevel = 1
     @AppStorage("ticket") var ticket = 0
     @AppStorage("use_ticket") var useTicket = false
+    @AppStorage("stop_data") var stopDate = Date()
     @State var itemSheet = false
+    @State var count = 0
     
     var body: some View {
         HStack(spacing: 10) {
@@ -32,37 +34,48 @@ struct StatusView: View {
             
             Text("Lv.\(userLevel)")
                 .font(Font.gameFont(size: 20))
-            
+            VStack {
+                Text("\(count)")
+                    .font(.system(size: 10))
             ZStack {
                 Color.yellow
-                HStack {
-                    Image("ticket")
-                        .resizable()
-                        .scaledToFit()
-                    Text("\(ticket)")
-                        .font(.gameFont(size: 20))
-                }
-                .onTapGesture {
-                    if ticket > 0 {
-                        itemSheet = true
-                    }
-                }
-                .confirmationDialog("経験値２倍チケットを使用しますか？", isPresented: $itemSheet, titleVisibility: .visible) {
-                    Button(action: {
-                        useTicket = true
-                        ticket -= 1
-                    }) {
-                        Text("使用する")
-                    }
-                } message: {
-                    Text("※24時間獲得経験値が２倍になります")
-                }
                 
-                
+                    HStack {
+                        Image("ticket")
+                            .resizable()
+                            .scaledToFit()
+                        Text("\(ticket)")
+                            .font(.gameFont(size: 20))
+                    }
+                    .onTapGesture {
+                        if ticket > 0 {
+                            itemSheet = true
+                        }
+                    }
+                    .confirmationDialog("経験値２倍チケットを使用しますか？", isPresented: $itemSheet, titleVisibility: .visible) {
+                        Button(action: {
+                            useTicket = true
+                            ticket -= 1
+                            stopDate = Date(timeIntervalSinceNow: 60*60*24)
+                            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                                count = Int(stopDate.timeIntervalSinceNow)
+                                if stopDate.timeIntervalSinceNow < 0 {
+                                    useTicket = false
+                                    timer.invalidate()
+                                }
+                            }
+                        }) {
+                            Text("使用する")
+                        }
+                    } message: {
+                        Text("※24時間獲得経験値が２倍になります")
+                    }
+                    
+                }
             }
             .frame(width: 60,height: 40)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-                
+            
         }
         
     }
