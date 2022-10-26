@@ -12,9 +12,13 @@ struct ExperienceBarView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.data, ascending: true)],
                   animation: .default) var items: FetchedResults<Task>
     @EnvironmentObject var todoManager: TodoManager
+    @AppStorage("user_level") var userLevel = 1
     @AppStorage("bar_exp") var bar = 0
     var body: some View {
         VStack {
+            Text("Lv.\(userLevel)")
+                .font(Font.gameFont(size: 20))
+                .padding(.leading,50)
             ZStack {
                 
                 Rectangle()
@@ -24,7 +28,7 @@ struct ExperienceBarView: View {
                 
             }
             .frame(width: 130,height: 20)
-            Text("\(bar)")
+            
         }
     }
     

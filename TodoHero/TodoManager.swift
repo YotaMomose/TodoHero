@@ -13,8 +13,17 @@ class TodoManager: ObservableObject {
     @Published var timerHandler : Timer?
     @Published var getExp:CGFloat = 0
     @Published var isVaidTimer = false
+    
+    
+    
+    
 }
 
+enum TimeFormat {
+    case hr
+    case min
+    case sec
+}
 
 
 extension Font {

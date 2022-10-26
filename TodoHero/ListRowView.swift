@@ -58,7 +58,7 @@ struct ListRowView: View {
                         .scaledToFit()
                         .frame(width: 40,height: 40)
                 }
-                // defaultをなんとかしたい
+                
             } else {
                 Text("□")
                 Text(task)
@@ -91,7 +91,7 @@ struct ListRowView: View {
                         .scaledToFit()
                         .frame(width: 40,height: 40)
                 }
-                // defaultをなんとかしたい
+                
             }
             
         }

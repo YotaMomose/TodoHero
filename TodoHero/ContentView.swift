@@ -12,16 +12,18 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.data, ascending: true)],
                   animation: .default) var items: FetchedResults<Task>
+    @EnvironmentObject var todoManager: TodoManager
     @State var firstLog = false
     @AppStorage("first_login") var firstLogin = true
     @AppStorage("use_ticket") var useTicket = false
     @AppStorage("stop_data") var stopDate = Date()
+    @State var ticketCount = 0
 
     
     var body: some View {
         NavigationStack {
             VStack {
-                StatusView()
+                StatusView(ticketCount: $ticketCount)
                 ListView()
             }
             .padding()
@@ -35,7 +37,17 @@ struct ContentView: View {
                 }
             }
         }
-        
+        .onAppear {
+            if useTicket {
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                    ticketCount = Int(stopDate.timeIntervalSinceNow)
+                    if stopDate.timeIntervalSinceNow < 0 {
+                        useTicket = false
+                        timer.invalidate()
+                    }
+                }
+            }
+        }
         .fullScreenCover(isPresented: $firstLogin) {
             InitializationView(isPresented: $firstLogin)
         }

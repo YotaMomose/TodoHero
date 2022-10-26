@@ -127,7 +127,7 @@ struct ListView: View {
    }
     
     func move(from source: IndexSet, to destination: Int) {
-            //下から上に並べ替え時の挙動
+            
             if source.first! > destination {
                 items[source.first!].data = items[destination].data - 1
                 for i in destination...items.count - 1 {
@@ -135,7 +135,6 @@ struct ListView: View {
                 }
             }
 
-            //上から下に並べ替え時の挙動
             if source.first! < destination {
                 items[source.first!].data = items[destination - 1].data + 1
                 for i in 0...destination - 1 {

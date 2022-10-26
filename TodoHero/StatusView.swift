@@ -10,13 +10,15 @@ import SwiftUI
 struct StatusView: View {
     @FetchRequest (sortDescriptors: []) var user: FetchedResults<UserInfo>
     @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject var todoManager: TodoManager
     @AppStorage("user_name") var userName = "未設定"
-    @AppStorage("user_level") var userLevel = 1
     @AppStorage("ticket") var ticket = 0
     @AppStorage("use_ticket") var useTicket = false
     @AppStorage("stop_data") var stopDate = Date()
     @State var itemSheet = false
-    @State var count = 0
+    @Binding var ticketCount: Int
+    @State var displayedTimeFormat: TimeFormat = .hr
+    
     
     var body: some View {
         HStack(spacing: 10) {
@@ -32,14 +34,15 @@ struct StatusView: View {
             
             ExperienceBarView()
             
-            Text("Lv.\(userLevel)")
-                .font(Font.gameFont(size: 20))
-            VStack {
-                Text("\(count)")
-                    .font(.system(size: 10))
+            
             ZStack {
                 Color.yellow
-                
+                VStack {
+                    if useTicket {
+                        Text("\(setTime())")
+                            .font(.system(size: 10))
+                    }
+                    
                     HStack {
                         Image("ticket")
                             .resizable()
@@ -58,7 +61,7 @@ struct StatusView: View {
                             ticket -= 1
                             stopDate = Date(timeIntervalSinceNow: 60*60*24)
                             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                                count = Int(stopDate.timeIntervalSinceNow)
+                                ticketCount = Int(stopDate.timeIntervalSinceNow)
                                 if stopDate.timeIntervalSinceNow < 0 {
                                     useTicket = false
                                     timer.invalidate()
@@ -73,17 +76,28 @@ struct StatusView: View {
                     
                 }
             }
-            .frame(width: 60,height: 40)
+            .frame(width: 60,height: 50)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             
         }
+        
+    }
+    
+    func setTime() -> String {
+        
+        let hr = ticketCount / 3600
+        let min = ticketCount % 3600 / 60
+        let sec = ticketCount % 3600 % 60
+        
+        return String(format: "%02d:%02d:%02d",hr,min,sec)
+        
         
     }
 }
 
 struct StatusView_Previews: PreviewProvider {
     static var previews: some View {
-        StatusView()
+        StatusView(ticketCount: .constant(10))
             .environmentObject(TodoManager())
     }
 }
